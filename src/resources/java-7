@@ -20,9 +20,9 @@ Projekt - propozycje:
 Wymagania:
 - rejestracja/logowanie - 5;
 - management zawartości - dodawanie/edycja/kasowanie postów - 3;
-- strona profilu użytkownika - 3;
+- strona profilu użytkownika (tylko nasze posty) - 3;
 - avatar dla użytkownika - 1;
-- wall - 5;
+- wall (aktywność obserwowanych osób posortowanych w jakiś specyficzny sposób) - 5;
 - komentarze - 2;
 - likowanie - 1;
 - powiadomienia mailowe o nowej zawartości/likach - 8;
