@@ -18,20 +18,6 @@ public class User {
     File userAvatar;
     AccountType accountType;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", password1='" + password1 + '\'' +
-                ", uniqueAccountName='" + uniqueAccountName + '\'' +
-                ", userAccountDescription='" + userAccountDescription + '\'' +
-                ", accountCreationDate=" + accountCreationDate +
-                ", accountStatus=" + accountStatus +
-                ", userAvatar=" + userAvatar +
-                ", accountType=" + accountType +
-                '}';
-    }
-
     public String getUniqueAccountName() {
         return uniqueAccountName;
     }
@@ -77,6 +63,47 @@ public class User {
     }
 
     public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password1='" + password1 + '\'' +
+                ", password2='" + password2 + '\'' +
+                ", uniqueAccountName='" + uniqueAccountName + '\'' +
+                ", userAccountDescription='" + userAccountDescription + '\'' +
+                ", accountCreationDate=" + accountCreationDate +
+                ", accountStatus=" + accountStatus +
+                ", userAvatar=" + userAvatar +
+                ", accountType=" + accountType +
+                '}';
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
+
+    public User(String login, String password1, String password2) {
+        this.login = login;
+        this.password1 = password1;
+        this.password2 = password2;
+    }
+
+    public User(String login, String password1, String password2, String uniqueAccountName, String userAccountDescription, Date accountCreationDate, AccountStatus accountStatus, File userAvatar, AccountType accountType) {
+        this.login = login;
+        this.password1 = password1;
+        this.password2 = password2;
+        this.uniqueAccountName = uniqueAccountName;
+        this.userAccountDescription = userAccountDescription;
+        this.accountCreationDate = accountCreationDate;
+        this.accountStatus = accountStatus;
+        this.userAvatar = userAvatar;
         this.accountType = accountType;
     }
 
