@@ -1,12 +1,15 @@
 package pl.mpas.microbloge_course.model;
 
+import com.google.common.base.Preconditions;
+
 import java.io.File;
 import java.util.Date;
 import java.util.Objects;
 
 public class User {
     private String login;
-    private String password;
+    private String password1;
+    private String password2;
     private String uniqueAccountName;
     private String userAccountDescription;
     // TODO: change this class for java 8 specific
@@ -19,7 +22,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "login='" + login + '\'' +
-                ", password='" + password + '\'' +
+                ", password1='" + password1 + '\'' +
                 ", uniqueAccountName='" + uniqueAccountName + '\'' +
                 ", userAccountDescription='" + userAccountDescription + '\'' +
                 ", accountCreationDate=" + accountCreationDate +
@@ -77,9 +80,9 @@ public class User {
         this.accountType = accountType;
     }
 
-    public User(String login, String password, String uniqueAccountName, String userAccountDescription, Date accountCreationDate, AccountStatus accountStatus, File userAvatar, AccountType accountType) {
-        this.login = login;
-        this.password = password;
+    public User(String login, String password1, String uniqueAccountName, String userAccountDescription, Date accountCreationDate, AccountStatus accountStatus, File userAvatar, AccountType accountType) {
+        this.login = Preconditions.checkNotNull(login, "Argument cannot be null!");
+        this.password1 = Preconditions.checkNotNull(password1, "Argument cannot be null!");
         this.uniqueAccountName = uniqueAccountName;
         this.userAccountDescription = userAccountDescription;
         this.accountCreationDate = accountCreationDate;
@@ -100,12 +103,12 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword1() {
+        return password1;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword1(String password1) {
+        this.password1 = password1;
     }
 
     @Override
@@ -114,12 +117,12 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password);
+                Objects.equals(password1, user.password1);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, password);
+        return Objects.hash(login, password1);
     }
 
 }
