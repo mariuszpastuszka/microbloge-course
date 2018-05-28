@@ -8,7 +8,7 @@ import pl.mpas.microbloge_course.model.RegistrationResult;
 import pl.mpas.microbloge_course.model.User;
 
 public class UserService {
-    private static Logger log = LogManager.getLogger(UserService.class);
+//    private static Logger log = LogManager.getLogger(UserService.class);
 
     private UserDAO userDAO;
 
@@ -21,13 +21,13 @@ public class UserService {
     }
 
     public RegistrationResult registerNewUser(User newUser) {
-        Preconditions.checkNotNull(newUser, "null!!!");
-        log.debug("registerNewUser()");
+//        Preconditions.checkNotNull(newUser, "null!!!");
+//        log.debug("registerNewUser()");
 
         RegistrationResult result = RegistrationResult.REG_SUCCESS;
 
         if (userDAO.checkIfUserExists(newUser)) {
-            log.debug("user already exists: " + newUser);
+//            log.debug("user already exists: " + newUser);
             return RegistrationResult.REG_USER_ALREADY_EXISTS;
         }
 
@@ -36,13 +36,13 @@ public class UserService {
     }
 
     public boolean deleteAccount(User userAccount) {
-        log.debug("deleteAccount: " + userAccount);
+//        log.debug("deleteAccount: " + userAccount);
 
         if (userDAO.checkIfUserExists(userAccount)) {
             userDAO.deleteUser(userAccount);
             return true;
         } else {
-            log.debug("trying to delete non existent user!!!");
+//            log.debug("trying to delete non existent user!!!");
         }
 
         return false;
