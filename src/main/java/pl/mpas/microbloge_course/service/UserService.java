@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import pl.mpas.microbloge_course.dao.UserDAO;
 import pl.mpas.microbloge_course.model.RegistrationResult;
 import pl.mpas.microbloge_course.model.User;
-
+// TODO:MP change into interface
 public class UserService {
 //    private static Logger log = LogManager.getLogger(UserService.class);
 
