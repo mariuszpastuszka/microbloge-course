@@ -20,8 +20,8 @@ public class MainController {
     @RequestMapping(value = "/register", method = { RequestMethod.POST })
     public String registerUser(@RequestParam(required = false) String login,
                                @RequestParam(required = false) String password1,
-                               @@RequestParam(required = false) String password2) {
-        return "";
+                               @RequestParam(required = false) String password2) {
+        return "registration-ok";
     }
 
 }
