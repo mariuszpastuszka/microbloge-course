@@ -20,9 +20,8 @@ public class UserService {
         // empty
     }
 
-    // TODO: finish it
     public RegistrationResult registerNewUser(User newUser) {
-        Preconditions.checkNotNull(newUser, "null!!!!");
+        Preconditions.checkNotNull(newUser, "null!!!");
         log.debug("registerNewUser()");
 
         RegistrationResult result = RegistrationResult.REG_SUCCESS;
@@ -36,7 +35,16 @@ public class UserService {
         return result;
     }
 
-    public void deleteAccount(User userAccount) {
+    public boolean deleteAccount(User userAccount) {
+        log.debug("deleteAccount: " + userAccount);
 
+        if (userDAO.checkIfUserExists(userAccount)) {
+            userDAO.deleteUser(userAccount);
+            return true;
+        } else {
+            log.debug("trying to delete non existent user!!!");
+        }
+
+        return false;
     }
 }

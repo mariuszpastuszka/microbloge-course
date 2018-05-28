@@ -33,4 +33,18 @@ public class UserServiceTest {
     public void registerNewUser_passwordMissmatch() {
 
     }
+
+    @Test
+    public void deleteUser_success() {
+        when(dummyDAO.checkIfUserExists(newUser)).thenReturn(true);
+
+        Assert.assertEquals(true, userService.deleteAccount(newUser));
+    }
+
+    @Test
+    public void deleteUser_notExist() {
+        when(dummyDAO.checkIfUserExists(newUser)).thenReturn(false);
+
+        Assert.assertEquals(false, userService.deleteAccount(newUser));
+    }
 }
