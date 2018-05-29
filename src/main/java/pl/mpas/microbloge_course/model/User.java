@@ -7,6 +7,16 @@ import java.util.Date;
 import java.util.Objects;
 
 public class User {
+    long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     private String login;
     private String password1;
     private String password2;

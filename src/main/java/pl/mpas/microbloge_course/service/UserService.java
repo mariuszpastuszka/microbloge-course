@@ -3,17 +3,22 @@ package pl.mpas.microbloge_course.service;
 import com.google.common.base.Preconditions;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.mpas.microbloge_course.dao.UserDAO;
 import pl.mpas.microbloge_course.model.RegistrationResult;
 import pl.mpas.microbloge_course.model.User;
+import pl.mpas.microbloge_course.repository.UserRepository;
+
 // TODO:MP change into interface
 public class UserService {
 //    private static Logger log = LogManager.getLogger(UserService.class);
 
-    private UserDAO userDAO;
+//    private UserDAO userDAO;
+    private UserRepository userRepository;
 
-    public UserService(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public UserService() {
@@ -26,7 +31,7 @@ public class UserService {
 
         RegistrationResult result = RegistrationResult.REG_SUCCESS;
 
-        if (userDAO.checkIfUserExists(newUser)) {
+        if (userRepository.existsById(newUser.getId())) {
 //            log.debug("user already exists: " + newUser);
             return RegistrationResult.REG_USER_ALREADY_EXISTS;
         }
@@ -38,8 +43,8 @@ public class UserService {
     public boolean deleteAccount(User userAccount) {
 //        log.debug("deleteAccount: " + userAccount);
 
-        if (userDAO.checkIfUserExists(userAccount)) {
-            userDAO.deleteUser(userAccount);
+        if (userRepository.existsById(userAccount.getId())) {
+            userRepository.delete(userAccount);
             return true;
         } else {
 //            log.debug("trying to delete non existent user!!!");
