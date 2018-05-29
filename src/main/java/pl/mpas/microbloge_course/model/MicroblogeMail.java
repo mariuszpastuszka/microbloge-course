@@ -1,11 +1,35 @@
 package pl.mpas.microbloge_course.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
 public class MicroblogeMail {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDateOfMailSending() {
+        return dateOfMailSending;
+    }
+
+    public void setDateOfMailSending(LocalDateTime dateOfMailSending) {
+        this.dateOfMailSending = dateOfMailSending;
+    }
+
+    @Id
+
+    long id;
     private String address;
     private String mailTheme;
     private String mailNote;
+    private LocalDateTime dateOfMailSending;
 
     public MicroblogeMail() {
     }
