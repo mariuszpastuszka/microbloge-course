@@ -1,9 +1,15 @@
 package pl.mpas.microbloge_course.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class LikedPost {
+    @Id
+    long id;
+
     User who;
     UserPost likedPost;
     Date date;

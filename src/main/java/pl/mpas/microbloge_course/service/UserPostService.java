@@ -3,6 +3,7 @@ package pl.mpas.microbloge_course.service;
 import pl.mpas.microbloge_course.dao.UserPostDao;
 
 public class UserPostService {
+    // TODO:MP replace with repository
     private UserPostDao postDao;
 
     public UserPostService() {

@@ -54,7 +54,10 @@ public class MainController {
             result = "registration-already-exists";
         }
 
+
         return result;
+
+
     }
 
 }

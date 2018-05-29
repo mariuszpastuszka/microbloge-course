@@ -1,0 +1,7 @@
+1). Dodać podstawowe ekrany:
+    - logowanie;
+    - strona główna;
+    - rejestracja
+2). Dodać Repository dla wszystkich modeli
+3). Dodać adnotację @Entity do wszyskich klas modeli
+    - dodać idki;
