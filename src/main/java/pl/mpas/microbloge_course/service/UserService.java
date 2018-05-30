@@ -4,12 +4,18 @@ import com.google.common.base.Preconditions;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.mpas.microbloge_course.dao.UserDAO;
 import pl.mpas.microbloge_course.model.RegistrationResult;
 import pl.mpas.microbloge_course.model.User;
 import pl.mpas.microbloge_course.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
 // TODO:MP change into interface
+@Component
 public class UserService {
 //    private static Logger log = LogManager.getLogger(UserService.class);
 
@@ -51,5 +57,12 @@ public class UserService {
         }
 
         return false;
+    }
+
+    public List<User> findAllRegisteredUsers() {
+        List<User> result = new ArrayList<>();
+        userRepository.findAll().forEach(result::add);
+
+        return result;
     }
 }

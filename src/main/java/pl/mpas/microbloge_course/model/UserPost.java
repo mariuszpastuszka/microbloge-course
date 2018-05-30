@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class UserPost {
+    private String postHeader;
     private String note;
     private Date creationDate;
     private PostStatus postStatus;

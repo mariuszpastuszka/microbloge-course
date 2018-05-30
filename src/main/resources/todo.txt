@@ -5,3 +5,5 @@
 2). Dodać Repository dla wszystkich modeli
 3). Dodać adnotację @Entity do wszyskich klas modeli
     - dodać idki;
+4). Dodanie formy do dodawania nowych postów użytkownika
+5). Dodanie metody restowej do wyświetlania wszystkich zarejestrowanych użytkowników
