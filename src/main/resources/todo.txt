@@ -7,3 +7,5 @@
     - dodać idki;
 4). Dodanie formy do dodawania nowych postów użytkownika
 5). Dodanie metody restowej do wyświetlania wszystkich zarejestrowanych użytkowników
+6). Rozwiązać problem:
+- Parameter 0 of constructor in pl.mpas.microbloge_course.service.UserService required a bean of type 'pl.mpas.microbloge_course.repository.UserRepository' that could not be found.
