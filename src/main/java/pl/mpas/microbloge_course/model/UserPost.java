@@ -5,6 +5,15 @@ import java.util.Objects;
 
 public class UserPost {
     private String postHeader;
+
+    public String getPostHeader() {
+        return postHeader;
+    }
+
+    public void setPostHeader(String postHeader) {
+        this.postHeader = postHeader;
+    }
+
     private String note;
     private Date creationDate;
     private PostStatus postStatus;

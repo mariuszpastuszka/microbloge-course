@@ -19,14 +19,14 @@ public class UserServiceTest {
     public void registerNewUser_positiveCase() {
         newUser = new User("mariusz.p@gmail.com", "password", "password");
 
-        when(dummyRepository.existsById(newUser.getId())).thenReturn(false);
+        when(dummyRepository.exists(newUser.getId())).thenReturn(false);
 
         Assert.assertEquals(REG_SUCCESS, userService.registerNewUser(newUser));
     }
 
     @Test
     public void registerNewUser_alreadyExists() {
-        when(dummyRepository.existsById(newUser.getId())).thenReturn(true);
+        when(dummyRepository.exists(newUser.getId())).thenReturn(true);
         Assert.assertEquals(REG_USER_ALREADY_EXISTS, userService.registerNewUser(newUser));
     }
 
@@ -37,14 +37,14 @@ public class UserServiceTest {
 
     @Test
     public void deleteUser_success() {
-        when(dummyRepository.existsById(newUser.getId())).thenReturn(true);
+        when(dummyRepository.exists(newUser.getId())).thenReturn(true);
 
         Assert.assertEquals(true, userService.deleteAccount(newUser));
     }
 
     @Test
     public void deleteUser_notExist() {
-        when(dummyRepository.existsById(newUser.getId())).thenReturn(true);
+        when(dummyRepository.exists(newUser.getId())).thenReturn(true);
 
         Assert.assertEquals(false, userService.deleteAccount(newUser));
     }

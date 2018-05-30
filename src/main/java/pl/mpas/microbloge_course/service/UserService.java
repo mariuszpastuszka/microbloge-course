@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.mpas.microbloge_course.dao.UserDAO;
 import pl.mpas.microbloge_course.model.RegistrationResult;
 import pl.mpas.microbloge_course.model.User;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 // TODO:MP change into interface
-@Component
+@Service
 public class UserService {
 //    private static Logger log = LogManager.getLogger(UserService.class);
 
@@ -37,7 +38,7 @@ public class UserService {
 
         RegistrationResult result = RegistrationResult.REG_SUCCESS;
 
-        if (userRepository.existsById(newUser.getId())) {
+        if (userRepository.exists(newUser.getId())) {
 //            log.debug("user already exists: " + newUser);
             return RegistrationResult.REG_USER_ALREADY_EXISTS;
         }
@@ -49,7 +50,7 @@ public class UserService {
     public boolean deleteAccount(User userAccount) {
 //        log.debug("deleteAccount: " + userAccount);
 
-        if (userRepository.existsById(userAccount.getId())) {
+        if (userRepository.exists(userAccount.getId())) {
             userRepository.delete(userAccount);
             return true;
         } else {
