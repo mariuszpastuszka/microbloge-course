@@ -43,6 +43,7 @@ public class MailServiceImpl implements MailService {
         try {
             mailSender.send(newMailMessage);
         } catch (MailException exception) {
+            result = false;
             System.err.println(String.format("Error occurred during mail sending: [%s]", exception));
         }
         return result;
