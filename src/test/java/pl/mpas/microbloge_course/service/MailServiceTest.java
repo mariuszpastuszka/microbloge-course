@@ -2,14 +2,18 @@ package pl.mpas.microbloge_course.service;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import pl.mpas.microbloge_course.service.implementation.MailServiceImpl;
 
 import java.util.Properties;
 
+@PropertySource({"classpath:application.properties"})
 public class MailServiceTest {
-
+    @Value("${spring.datasource.username}")
+    String value;
     MailService mailService = new MailServiceImpl(getJavaMailSender(), null);
 
     @Test
@@ -24,6 +28,8 @@ public class MailServiceTest {
 
     private JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+        String port;
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setProtocol("smtp");
@@ -39,4 +45,18 @@ public class MailServiceTest {
         return mailSender;
     }
 
+    /*
+            <property name="host"><value>smtp.gmail.com</value></property>
+        <property name="port"><value>587</value></property>
+        <property name="protocol"><value>smtp</value></property>
+        <property name="username"><value>${mail.username}</value></property>
+        <property name="password"><value>${mail.password}</value></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.quitwait">false</prop>
+            </props>
+        </property>
+     */
 }

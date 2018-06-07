@@ -1,9 +1,11 @@
 package pl.mpas.microbloge_course.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.mpas.microbloge_course.model.UserPost;
 
+@Controller
 public class PostController {
 
     @GetMapping("/add-new-post")

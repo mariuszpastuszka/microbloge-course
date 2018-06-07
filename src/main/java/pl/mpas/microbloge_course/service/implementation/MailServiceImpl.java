@@ -3,11 +3,12 @@ package pl.mpas.microbloge_course.service.implementation;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import pl.mpas.microbloge_course.service.MailService;
 
 public class MailServiceImpl implements MailService {
 
-    private MailSender mailSender;
+    private JavaMailSender mailSender;
     private SimpleMailMessage templateMessage;
 
     @Override
@@ -18,12 +19,12 @@ public class MailServiceImpl implements MailService {
                 '}';
     }
 
-    public MailServiceImpl(MailSender mailSender, SimpleMailMessage templateMessage) {
+    public MailServiceImpl(JavaMailSender mailSender, SimpleMailMessage templateMessage) {
         this.mailSender = mailSender;
         this.templateMessage = templateMessage;
     }
 
-    public void setMailSender(MailSender mailSender) {
+    public void setMailSender(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
@@ -46,6 +47,13 @@ public class MailServiceImpl implements MailService {
             result = false;
             System.err.println(String.format("Error occurred during mail sending: [%s]", exception));
         }
+        return result;
+    }
+
+    @Override
+    public boolean sendEmailToUserWithAttachment(String address, String title, String message, String from, String resourcePath) {
+        boolean result = true;
+
         return result;
     }
 }
