@@ -28,14 +28,20 @@ public class MailServiceTest {
     }
 
     @Test
-    public void sendEmailWithAttachment() {
-        InputStream in = getClass().getResourceAsStream("file.txt");
+    public void readContentOfLocalResource() {
+        InputStream in = getClass().getResourceAsStream("/attachment/file.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         try {
             String line;
             while (null != (line = reader.readLine())) {
                 System.out.println(line);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            String current = new File( "." ).getCanonicalPath();
+            System.out.println(current);
         } catch (IOException e) {
             e.printStackTrace();
         }
