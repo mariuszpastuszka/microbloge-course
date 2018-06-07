@@ -3,10 +3,15 @@ package pl.mpas.microbloge_course.service.implementation;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import pl.mpas.microbloge_course.model.User;
+import pl.mpas.microbloge_course.model.UserMessageSendInfo;
+import pl.mpas.microbloge_course.repository.UserMessageSendInfoRepository;
 import pl.mpas.microbloge_course.repository.UserPostRepository;
 import pl.mpas.microbloge_course.repository.UserRepository;
 import pl.mpas.microbloge_course.service.MailSenderJob;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -15,6 +20,7 @@ public class MailSenderJobImpl implements MailSenderJob {
     private JavaMailSender mailSender;
     private UserRepository userRepository;
     private UserPostRepository userPostRepository;
+    private UserMessageSendInfoRepository timestampRepository;
 
     public MailSenderJobImpl() {
         executor = Executors.newFixedThreadPool(4);
@@ -45,8 +51,11 @@ public class MailSenderJobImpl implements MailSenderJob {
     @Override
     public void sendSubscribtionsAboutNewMessages() {
         // pobranie adresatow
-        for (User user : userRepository.findAll()) {
+        List<UserMessageSendInfo> timestampsOfUsers = new ArrayList<>();
+        timestampRepository.findAll().forEach(timestampsOfUsers::add);
 
+        for (User user : userRepository.findAll()) {
+            LocalDateTime userLastMessageSentTimestamp;
         }
 
         // pobranie info o nowych wiadomosciach od ostatnie wysylki
