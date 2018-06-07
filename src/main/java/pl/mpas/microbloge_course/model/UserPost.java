@@ -1,5 +1,6 @@
 package pl.mpas.microbloge_course.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class UserPost {
     }
 
     private String note;
-    private Date creationDate;
+    private LocalDateTime creationDate;
     private PostStatus postStatus;
     private PostType postType;
     private User postAuthor;
@@ -24,7 +25,7 @@ public class UserPost {
         // empty
     }
 
-    public UserPost(String note, Date creationDate, PostStatus postStatus, PostType postType, User postAuthor) {
+    public UserPost(String note, LocalDateTime creationDate, PostStatus postStatus, PostType postType, User postAuthor) {
         this.note = note;
         this.creationDate = creationDate;
         this.postStatus = postStatus;
@@ -40,11 +41,11 @@ public class UserPost {
         this.note = note;
     }
 
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

@@ -12,6 +12,7 @@ import pl.mpas.microbloge_course.service.MailSenderJob;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -51,11 +52,21 @@ public class MailSenderJobImpl implements MailSenderJob {
     @Override
     public void sendSubscribtionsAboutNewMessages() {
         // pobranie adresatow
+
+        // TODO:MP - convert to one object
         List<UserMessageSendInfo> timestampsOfUsers = new ArrayList<>();
         timestampRepository.findAll().forEach(timestampsOfUsers::add);
 
         for (User user : userRepository.findAll()) {
-            LocalDateTime userLastMessageSentTimestamp;
+            // hack
+            Optional<LocalDateTime> userLastMessageSentTimestamp = timestampsOfUsers.get(0).getTimeOfLastSentMessage(user);
+            if (userLastMessageSentTimestamp.isPresent()) {
+                // send only not sent messages
+            } else {
+                // send all ones
+            }
+
+            timestampsOfUsers.get(0).setTimeOfLastSentMessageForUser(user, LocalDateTime.now());
         }
 
         // pobranie info o nowych wiadomosciach od ostatnie wysylki
