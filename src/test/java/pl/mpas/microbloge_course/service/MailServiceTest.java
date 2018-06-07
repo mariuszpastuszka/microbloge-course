@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import pl.mpas.microbloge_course.service.implementation.MailServiceImpl;
 
+import java.io.*;
 import java.util.Properties;
 
 @PropertySource({"classpath:application.properties"})
@@ -24,6 +25,20 @@ public class MailServiceTest {
                 "microbloge-course");
 
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void sendEmailWithAttachment() {
+        InputStream in = getClass().getResourceAsStream("file.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        try {
+            String line;
+            while (null != (line = reader.readLine())) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private JavaMailSender getJavaMailSender() {
