@@ -11,14 +11,16 @@ import pl.mpas.microbloge_course.model.RegistrationResult;
 import pl.mpas.microbloge_course.model.User;
 import pl.mpas.microbloge_course.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 // TODO:MP change into interface
 @Service
+@Transactional
 public class UserService {
-//    private static Logger log = LogManager.getLogger(UserService.class);
+    private static Logger log = LogManager.getLogger(UserService.class);
 
 //    private UserDAO userDAO;
     private UserRepository userRepository;
@@ -34,7 +36,7 @@ public class UserService {
 
     public RegistrationResult registerNewUser(User newUser) {
 //        Preconditions.checkNotNull(newUser, "null!!!");
-//        log.debug("registerNewUser()");
+        log.debug("registerNewUser()");
 
         RegistrationResult result = RegistrationResult.REG_SUCCESS;
 

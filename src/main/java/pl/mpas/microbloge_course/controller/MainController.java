@@ -1,6 +1,8 @@
 package pl.mpas.microbloge_course.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import pl.mpas.microbloge_course.service.UserService;
 
 @Controller
 public class MainController {
+    private static Logger log = LogManager.getLogger(MainController.class);
 
     private UserService userService;
 
@@ -33,9 +36,14 @@ public class MainController {
     }
 
     @GetMapping("/greeting")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+                           @RequestParam(name = "surname", required = false, defaultValue = "P.") String surname, Model model) {
+        log.debug("inside greeting() method");
         model.addAttribute("name", name);
-        return "registration";
+        model.addAttribute("surname", surname);
+        log.debug("model object: " + model);
+        return "greeting";
+        // http://localhost:8080/greeting?name=Mariusz&surname=Pastuszka
     }
 
     @RequestMapping(value = "/register", method = { RequestMethod.POST })
