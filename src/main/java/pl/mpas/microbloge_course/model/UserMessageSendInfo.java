@@ -1,22 +1,38 @@
 package pl.mpas.microbloge_course.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 
+@Entity
 public class UserMessageSendInfo {
+    @Id
     private long id;
-    private Map<User, LocalDateTime> lastMessageSentTimestamps;
+    private User user;
+    private LocalDateTime lastMessageSentTimestamps;
 
-    public UserMessageSendInfo(Map<User, LocalDateTime> lastMessageSentTimestamps) {
+    public UserMessageSendInfo(User user, LocalDateTime lastMessageSentTimestamps) {
         this.lastMessageSentTimestamps = lastMessageSentTimestamps;
+        this.user = user;
     }
 
-    public Optional<LocalDateTime> getTimeOfLastSentMessage(User user) {
-        return Optional.ofNullable(lastMessageSentTimestamps.get(user));
+    public User getUser() {
+        return user;
     }
 
-    public void setTimeOfLastSentMessageForUser(User user, LocalDateTime timestamp) {
-        lastMessageSentTimestamps.put(user, timestamp);
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public LocalDateTime getLastMessageSentTimestamps() {
+        return lastMessageSentTimestamps;
+    }
+
+    public void setLastMessageSentTimestamps(LocalDateTime lastMessageSentTimestamps) {
+        this.lastMessageSentTimestamps = lastMessageSentTimestamps;
     }
 }

@@ -55,7 +55,7 @@ public class ThreadExampleTest {
 
     @Test
     public void executorThread() {
-;
+        Executor executor = Executors.newFixedThreadPool(4);
         Runnable job = () -> {
             System.out.println("Sending emails from thread: " + Thread.currentThread().getName());
         };

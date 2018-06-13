@@ -38,7 +38,7 @@ public class UserService {
 
         RegistrationResult result = RegistrationResult.REG_SUCCESS;
 
-        if (userRepository.exists(newUser.getId())) {
+        if (userRepository.existsById(newUser.getId())) {
 //            log.debug("user already exists: " + newUser);
             return RegistrationResult.REG_USER_ALREADY_EXISTS;
         }
@@ -50,7 +50,7 @@ public class UserService {
     public boolean deleteAccount(User userAccount) {
 //        log.debug("deleteAccount: " + userAccount);
 
-        if (userRepository.exists(userAccount.getId())) {
+        if (userRepository.existsById(userAccount.getId())) {
             userRepository.delete(userAccount);
             return true;
         } else {

@@ -9,12 +9,13 @@ import pl.mpas.microbloge_course.service.UserService;
 
 import java.util.List;
 
-@RestController
+//@RestController
 public class DevelopmentTests {
 
+    @Autowired
     private UserService userService;
 
-    @Autowired
+//    @Autowired
     public DevelopmentTests(UserService userService) {
         this.userService = userService;
     }
